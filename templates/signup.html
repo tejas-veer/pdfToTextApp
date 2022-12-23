@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block title %}PdfToText | Signup{% endblock title %}
+{% block content %}
+<div class="container mt-3">
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+        </div> 
+        <div class="form-group">
+        <label for="email">Username</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock content %}

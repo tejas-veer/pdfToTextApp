@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PdfToText</title>
-</head>
-<body>
-    Hello word
-</body>
-</html>
+{% extends 'base.html' %}
+
+
+{% block title %}PdfToText{% endblock title %}
+{% block content %}
+<div class="container mt-3">
+
+    <form>
+        <div class="form-group">
+          <label for="file">Upload File</label>
+          <input type="file" class="form-control-file" accept=".pdf,image/*" id="file">
+        </div>
+      </form>
+
+</div>
+{% endblock content %}
