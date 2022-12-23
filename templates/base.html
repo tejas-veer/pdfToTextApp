@@ -26,9 +26,13 @@
           
           </ul>
           <span class="navbar-text">
+            {%if user.is_authenticated %}
+                {{user.username}}
+                <a class="btn btn-outline-success ml-2" href="{% url 'logout' %}" role="button">Logout</a>
+            {% else %}
             <a class="btn btn-outline-success" href="{% url 'login' %}" role="button">Login</a>
             <a class="btn btn-outline-success" href="{% url 'signup' %}" role="button">Signup</a>
-
+            {% endif %}
           </span>
         </div>
       </nav>

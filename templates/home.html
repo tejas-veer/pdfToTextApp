@@ -5,10 +5,11 @@
 {% block content %}
 <div class="container mt-3">
 
-    <form>
+    <form method="POST">
+        {% csrf_token %}
         <div class="form-group">
-          <label for="file">Upload File</label>
-          <input type="file" class="form-control-file" accept=".pdf,image/*" id="file">
+          <label for="targetfile">Upload File</label>
+          <input type="file" class="form-control-file" accept=".pdf,image/*" id="targetfile" name="targetfile">
         </div>
       </form>
 
