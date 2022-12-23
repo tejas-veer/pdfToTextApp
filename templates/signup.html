@@ -4,6 +4,16 @@
 {% block title %}PdfToText | Signup{% endblock title %}
 {% block content %}
 <div class="container mt-3">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endfor %}
+    {% endif %}
     <form method="POST">
         {% csrf_token %}
         <div class="form-group">

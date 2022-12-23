@@ -6,6 +6,8 @@ from django.contrib.auth import login as auth_login
 import cloudinary.uploader 
 from .models import TextModel
 from django.http import *
+from django.contrib import messages
+
 
 # Create your views here.
 def home(request):
@@ -23,7 +25,8 @@ def home(request):
             return redirect('home')
         except Exception as e:
             print(e)
-    return render(request,"home.html")
+            messages.error(request, 'Unable to process request, Try again')
+            redirect("home") 
 
     context = {}
     user = request.user
@@ -44,7 +47,8 @@ def login(request):
             auth_login(request,user)
             return redirect("home")
         else:
-            HttpResponse("Invalid Credentials")
+            messages.error(request,"Invalid Credentials")
+            return redirect('login')
     return render(request,"login.html")
 
 
@@ -62,9 +66,11 @@ def signup(request):
                 user = User.objects.create_user(username=username,password=password,first_name=name)
                 return redirect("login")
             else:
-                return HttpResponse("Password does not match")
+                messages.error(request,"Password does not match")
+                return redirect('signup')
         else:
-            return HttpResponse("username already exist")
+            messages.error(request, "Username already exist")
+            return redirect('signup')
 
     return render(request,"signup.html")
 
