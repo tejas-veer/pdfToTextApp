@@ -3,20 +3,20 @@
 
 {% block title %}PdfToText{% endblock title %}
 {% block content %}
-<div class="container mt-3">
+<div class="container my-3 ">
 
     <form  method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
-          <label for="targetfile">Upload File</label>
-          <input type="file" class="form-control-file" accept=".pdf,image/*" id="targetfile" name="targetfile">
+          <label for="target_file">Upload File</label>
+          <input type="file" class="form-control-file" accept=".pdf,image/*" id="target_file" name="target_file">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 
 </div>
-
-<div class="container">
+<br>
+<div class="container my-3">
     {% if messages %}
         {% for message in messages %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -41,8 +41,8 @@
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
                     <td>{{data.file_name}}</td>
-                    <td>{{data.file_link}}</td>
-                    <td>{{data.text}}</td>
+                    <td><a href="{{data.file_link}}" target="_blank">View File</a></td>
+                    <td><a href="{% url "text" pk=data.id%}" target="_blank">View Text</a></td>
                 </tr>
            {% endfor %}
         </tbody>
