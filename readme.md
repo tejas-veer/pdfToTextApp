@@ -14,7 +14,7 @@ Libraries :
 * cloudinary
 
 
-
+Overview:
 1. Performed basic user authentication(username,password)
 2. User can upload pdf or image file
 3. Uploaded file get processed by tesseract_ocr.exe and perform text extraction
