@@ -19,7 +19,6 @@ from pdf2image import convert_from_bytes
 pytesseract.pytesseract.tesseract_cmd = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe" 
 
 def ocr(target_file):
-    # import pdb;pdb.set_trace()
     request_file = target_file.file.getvalue()
     if target_file.content_type == 'application/pdf':
         images = convert_from_bytes(request_file,500,poppler_path="C:\Program Files\poppler-22.12.0\Library\\bin")
@@ -28,7 +27,6 @@ def ocr(target_file):
     else:
         image = Image.open(io.BytesIO(request_file))
         text = pytesseract.image_to_string(image, lang = 'eng')
-    print(text)
     return text
 
 def home(request):
@@ -39,7 +37,6 @@ def home(request):
         try:
             target_file = request.FILES['target_file']
             resp = cloudinary.uploader.upload(target_file )
-            print(resp)
             file_name = target_file.name
             file_link = resp.get('url')
             user = request.user
