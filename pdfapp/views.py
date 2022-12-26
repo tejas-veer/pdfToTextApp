@@ -19,6 +19,8 @@ from pdf2image import convert_from_bytes
 pytesseract.pytesseract.tesseract_cmd = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe" 
 
 def ocr(target_file):
+    # import pdb;pdb.set_trace()
+    request_file = target_file.file.getvalue()
     if target_file.content_type == 'application/pdf':
         images = convert_from_bytes(request_file,500,poppler_path="C:\Program Files\poppler-22.12.0\Library\\bin")
         for image in images:
